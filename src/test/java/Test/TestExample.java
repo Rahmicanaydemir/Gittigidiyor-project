@@ -38,6 +38,9 @@ public class TestExample extends BaseTest {
 
         basketPage.controlEqualsProductPrices();
 
+        basketPage.productNumberAmount();
+        basketPage.productDelete();
+
 
 
     }

@@ -6,10 +6,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 import java.util.Random;
 
+import static Utils.Elements.basketPage_productAmount;
 
 
 public class BasePage {
@@ -58,7 +60,6 @@ public class BasePage {
         return driver.getTitle();
     }
 
-
     public String getElementText(By by){
         return driver.findElement(by).getText();
     }
@@ -68,7 +69,6 @@ public class BasePage {
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
     }
 
-
     public String getCurrentPageUrl(){
        return driver.getCurrentUrl();
     }
@@ -77,13 +77,17 @@ public class BasePage {
         return new Random().nextInt(limit);
     }
 
-
     public void waitSecond(int seconds) {
         try {
-            Thread.sleep(seconds*1000);
+            Thread.sleep(seconds * 1000);
             logger.info(seconds+" saniye bekleniyor.");
         }catch (Exception e){
             logger.info(seconds+" saniye beklenemiyor :D");
         }
+    }
+
+    public void selectOption(By by,String value){
+        Select select=new Select(driver.findElement(by));
+        select.selectByValue(value);
     }
 }

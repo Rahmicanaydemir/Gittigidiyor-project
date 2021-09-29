@@ -29,8 +29,5 @@ public class BaseTest {
     @After
     public void end(){
         driver.quit();
-
     }
-
-
 }
